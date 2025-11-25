@@ -5,9 +5,13 @@
 typedef struct student_info records;
 
 void print_records(records data){
-
-    // printf("Student name - %s, Student id - %d , Standard - %d , Age - %d",data->name, data->id, data->standard, data->age);
     printf("Student name - %s, Student id - %d , Standard - %d , Age - %d",data.name, data.id, data.standard, data.age);
+    printf("\n");
+}
+
+void print_records_ref(records * data){
+
+    printf("Student name - %s, Student id - %d , Standard - %d , Age - %d",data->name, data->id, data->standard, data->age);
     printf("\n");
 }
 
@@ -23,7 +27,16 @@ int main(){
     print_records(first);
 
     // Pointer example
-    records * second;
+    records * second = &first;
+
+    second->id = 212211018;
+    second->standard = 12;
+    second->age = 28;
+    second->name = "Shilpa";
+
+    print_records_ref(second);
+
+    print_records(first);
 
     return 0;
 }
